@@ -1,0 +1,20 @@
+<h1>Comments</h2>
+<p>
+  Enter your comments below:
+</p>
+<form action="/comments" method="post">
+  <label for="Username">Username</label>
+  <input type="text" name="username" id="username" />
+  <p></p>
+  <label for="body">Body</label>
+  <textarea name="body" rows="5" cols="10" id="body"></textarea>
+  <button class="btn">Post</button>
+</form>
+<p>See other users comments</p>
+<% for comment in Comment.all %>
+  <p><%= comment.username %></p>
+  <p>
+    <%= comment.body %>
+  </p>
+  <hr/>
+<% end %>

@@ -1,0 +1,112 @@
+<h1>Our System Stats</h1>
+<p>
+  Our techs are working around the clock to make sure that you have water
+  and power. Checkout our stats to see our performace.
+</p>
+<h2>Water Stats</h2>
+<div class="row">
+  <div class="col l6 s12">
+    <h3>Water Quality</h3>
+    <div id="chart_div4" style="width:250px; height: 250px;"></div>
+  </div>
+</div>
+<h2>Power Stats</h2>
+<div class="row">
+  <div class="col l6 s12">
+    <h3>Relay 1</h3>
+    <div id="chart_div" style="width: 450px; height: 250px;"></div>
+    <div id="chart_div5" style="width: 450px; height: 250px;"></div>
+  </div>
+  <div class="col l6 s12">
+    <h3>Relay 2</h3>
+    <div id="chart_div2" style="width: 450px; height: 250px;"></div>
+    <div id="chart_div6" style="width: 450px; height: 250px;"></div>
+  </div>
+</div>
+
+<script type="text/javascript">
+var fullData;
+    $.getJSON( "/cmd?cmd=python%20opc_get_values.py", function( data ) {
+          fullData = data;
+      google.charts.load('current', {'packages':['corechart','gauge']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var r1LoadData = google.visualization.arrayToDataTable([
+          ['System', 'Value'],
+          ['Load',  fullData[1]]
+        ]);
+
+        var r1FlowData = google.visualization.arrayToDataTable([
+          ['System', 'Value'],
+          ['Flow', fullData[2]]
+        ]);
+
+        var powerLoadOptions = {
+          width: 250, height: 250,
+          redFrom: 90, redTo: 100,
+          yellowFrom:85, yellowTo: 90,
+          minorTicks: 10,
+          max: 100
+        };
+
+        var powerFlowOptions = {
+          width: 250, height: 250,
+          redFrom: 0, redTo: 20,
+          yellowFrom:20, yellowTo: 35,
+          minorTicks: 10,
+          max: 100
+        };
+
+        var r2LoadData = google.visualization.arrayToDataTable([
+          ['System', 'Value'],
+          ['Load',  fullData[4]]
+        ]);
+
+        var r2FlowData = google.visualization.arrayToDataTable([
+          ['System', 'Value'],
+          ['Flow', fullData[5]]
+        ]);
+
+
+        var waterData = google.visualization.arrayToDataTable([
+      ['System', 'Value'],
+      ['Pumps', 0],
+    ]);
+
+    var water1Data = google.visualization.arrayToDataTable([
+  ['System', 'Value'],
+  ['Water Quality',fullData[28] * 100],
+]);
+
+    var waterOptions = {
+     width: 250, height: 250,
+     redFrom: 0, redTo: 3,
+     yellowFrom:3, yellowTo: 5.5,
+     greenFrom: 5.5, greenTo: 6,
+     max: 6
+   };
+
+   var water1Options = {
+    width: 250, height: 250,
+    redFrom: 0, redTo: 90,
+    yellowFrom:90, yellowTo: 98,
+    greenFrom: 98, greenTo: 100,
+    minorTicks: 10,
+    max: 100
+  };
+
+        var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+        var chart2 = new google.visualization.Gauge(document.getElementById('chart_div2'));
+        var chart3 = new google.visualization.Gauge(document.getElementById('chart_div3'))
+        var chart4 = new google.visualization.Gauge(document.getElementById('chart_div4'))
+        var chart5 = new google.visualization.Gauge(document.getElementById('chart_div5'))
+        var chart6 = new google.visualization.Gauge(document.getElementById('chart_div6'))
+        chart.draw(r1LoadData, powerLoadOptions);
+        chart2.draw(r2LoadData, powerLoadOptions);
+        chart3.draw(waterData, waterOptions);
+        chart4.draw(water1Data, water1Options);
+        chart5.draw(r1FlowData, powerFlowOptions);
+        chart6.draw(r2FlowData, powerFlowOptions);
+      }
+       });
+    </script>
