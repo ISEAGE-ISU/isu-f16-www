@@ -18,8 +18,8 @@ To keep the routes persistent you need to add some lines to your `/etc/network/i
   post-up ip route add 192.168.3.0/24 via 1192.168.1.1
 ```
 
-## Install Build Environment
-[Install the build environment for ruby](https://github.com/rbenv/ruby-build/wiki)
+### Setup the proxy
+- Check the setup documents for more details
 
 ## Install VM Tools and git
 Makes managing the VM easier
@@ -27,11 +27,6 @@ Makes managing the VM easier
 
 Git will used for installing `rbenv`
 - Install the package `git`
-
-##  Install Ruby
- - Install [`rbenv`](https://github.com/rbenv/rbenv).
- - Be sure to install the  [`ruby-build`](https://github.com/rbenv/ruby-build) plugin.
- - [Install Ruby](https://github.com/rbenv/ruby-build#usage)
 
 ## Install `python-dev` package
 
@@ -44,7 +39,6 @@ Git will used for installing `rbenv`
 - Download [PyXML](http://downloads.sourceforge.net/project/pyxml/pyxml/0.8.4/PyXML-0.8.4.tar.gz)
 - Extract the archive
 - Run `python setup.py install` inside the extract directory as root
-
 
 ## Install ZSI
 - [Download](https://pypi.python.org/pypi/ZSI/) `ZSI-2.0-rc3.tar.gz`
@@ -61,14 +55,21 @@ Git will used for installing `rbenv`
 ## Install SQLite3 database packages
 - Install the packages `sqlite3` and `libsqlite3-dev`.
 
-## Setup the proxy
-- Check the setup documents for more details
-
 ## Get the code on the machine
 The simplest way is to clone the git repo into the machine. Other methods for getting the code on the server are exercises left to the reader.
 
 ## Configure the IPs of your SCADA machines on `config.py`
 - The application needs direct access to SCADA machines in order to collect stats.
+
+##  Install Ruby
+ - Install [rbenv](https://github.com/rbenv/rbenv).
+ - Be sure to install the  [ruby-build](https://github.com/rbenv/ruby-build) plugin.
+ - [Install Ruby](https://github.com/rbenv/ruby-build#usage)
+
+## Install Build Environment
+Find the line for your operating system and install the packages on ruby-build wiki.
+
+ [ruby-build wiki](https://github.com/rbenv/ruby-build/wiki#suggested-build-environment)
 
 ## Install Bundler
 - `gem install bundler --no-document`
