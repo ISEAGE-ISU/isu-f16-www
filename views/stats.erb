@@ -32,12 +32,12 @@ var fullData;
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
         var r1LoadData = google.visualization.arrayToDataTable([
-          ['System', 'Value'],
+          ["System", "Value"],
           ['Load',  fullData[1]]
         ]);
 
         var r1FlowData = google.visualization.arrayToDataTable([
-          ['System', 'Value'],
+          ["System", "Value"],
           ['Flow', fullData[2]]
         ]);
 
@@ -58,24 +58,18 @@ var fullData;
         };
 
         var r2LoadData = google.visualization.arrayToDataTable([
-          ['System', 'Value'],
+          ["System", "Value"],
           ['Load',  fullData[4]]
         ]);
 
         var r2FlowData = google.visualization.arrayToDataTable([
-          ['System', 'Value'],
+          ["System", "Value"],
           ['Flow', fullData[5]]
         ]);
 
-
-        var waterData = google.visualization.arrayToDataTable([
-      ['System', 'Value'],
-      ['Pumps', 0],
-    ]);
-
     var water1Data = google.visualization.arrayToDataTable([
-  ['System', 'Value'],
-  ['Water Quality',fullData[28] * 100],
+  ["System", "Value"],
+  ['Water Quality',fullData[28] * 100]
 ]);
 
     var waterOptions = {
@@ -97,13 +91,11 @@ var fullData;
 
         var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
         var chart2 = new google.visualization.Gauge(document.getElementById('chart_div2'));
-        var chart3 = new google.visualization.Gauge(document.getElementById('chart_div3'))
         var chart4 = new google.visualization.Gauge(document.getElementById('chart_div4'))
-        var chart5 = new google.visualization.Gauge(document.getElementById('chart_div5'))
-        var chart6 = new google.visualization.Gauge(document.getElementById('chart_div6'))
+        var chart5 = new google.visualization.Gauge(document.getElementById('chart_div5'));
+        var chart6 = new google.visualization.Gauge(document.getElementById('chart_div6'));
         chart.draw(r1LoadData, powerLoadOptions);
         chart2.draw(r2LoadData, powerLoadOptions);
-        chart3.draw(waterData, waterOptions);
         chart4.draw(water1Data, water1Options);
         chart5.draw(r1FlowData, powerFlowOptions);
         chart6.draw(r2FlowData, powerFlowOptions);
