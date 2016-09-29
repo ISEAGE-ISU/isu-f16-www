@@ -61,15 +61,15 @@ The simplest way is to clone the git repo into the machine. Other methods for ge
 ## Configure the IPs of your SCADA machines on `config.py`
 - The application needs direct access to SCADA machines in order to collect stats.
 
-##  Install Ruby
- - Install [rbenv](https://github.com/rbenv/rbenv).
- - Be sure to install the  [ruby-build](https://github.com/rbenv/ruby-build) plugin.
- - [Install Ruby](https://github.com/rbenv/ruby-build#usage)
-
 ## Install Build Environment
 Find the line for your operating system and install the packages on ruby-build wiki.
 
  [ruby-build wiki](https://github.com/rbenv/ruby-build/wiki#suggested-build-environment)
+
+##  Install Ruby
+ - Install [rbenv](https://github.com/rbenv/rbenv).
+ - Be sure to install the  [ruby-build](https://github.com/rbenv/ruby-build) plugin.
+ - [Install Ruby](https://github.com/rbenv/ruby-build#usage)
 
 ## Install Bundler
 - `gem install bundler --no-document`
