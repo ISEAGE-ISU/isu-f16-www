@@ -14,8 +14,8 @@ You might need to change `eth1` to something depending on how you setup your NIC
 To keep the routes persistent you need to add some lines to your `/etc/network/interfaces`
 
 ```
-  post-up ip route add 192.168.2.0/24 via 1192.168.1.1
-  post-up ip route add 192.168.3.0/24 via 1192.168.1.1
+  post-up ip route add 192.168.2.0/24 via 192.168.1.1
+  post-up ip route add 192.168.3.0/24 via 192.168.1.1
 ```
 
 ### Setup the proxy
